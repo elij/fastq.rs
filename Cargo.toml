@@ -1,5 +1,5 @@
 [package]
-name = "fastq.rs"
+name = "fastq"
 version = "0.0.1"
 authors = ["Elijah Charles <elijah.charles@intel.com>"]
 
