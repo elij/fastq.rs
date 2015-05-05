@@ -1,6 +1,6 @@
-use nom::{IResult,Needed,not_line_ending,line_ending};
-use nom::IResult::*;
 use std::str;
+use nom::IResult::*;
+use nom::{IResult,Needed,not_line_ending,line_ending};
 
 #[derive(Debug,PartialEq,Eq)]
 pub struct Base {
