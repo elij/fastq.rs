@@ -1,5 +1,3 @@
-#![feature(core,collections)]
-
 use nom::{IResult,Needed,not_line_ending,line_ending};
 use nom::IResult::*;
 use std::str;

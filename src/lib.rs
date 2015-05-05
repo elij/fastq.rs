@@ -1,12 +1,9 @@
-#![feature(core,collections)]
-
 #[macro_use]
 extern crate nom;
 
 pub mod parser;
 
 mod tests {
-  use super::*;
   use nom::IResult;
   use super::parser::*;  
 
