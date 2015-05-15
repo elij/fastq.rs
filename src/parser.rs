@@ -1,17 +1,17 @@
 use std::str;
 use nom::IResult::*;
-use nom::{IResult,Needed,not_line_ending,line_ending};
+use nom::{IResult,Needed,not_line_ending,line_ending,eof};
 
-#[derive(Debug,PartialEq,Eq)]
+#[derive(Debug)]
 pub struct Base {
   pub key: Nucleobase,
-  pub score: u8,
+  pub score: f32,
 }
 
-#[derive(Debug,PartialEq,Eq)]
+#[derive(Debug)]
 pub struct Sequence<'a> {
   pub id: &'a str,
-  bases: Vec<Base>,
+  pub bases: Vec<Base>,
 }
 
 #[derive(Debug,PartialEq,Eq)]
@@ -56,20 +56,10 @@ pub fn many_reads(input:&[u8]) -> IResult<&[u8], Vec<Sequence>> {
                  'U' => Nucleobase::U,
                  _ => Nucleobase::N,
                }
-             , score: ('~' as u8) - (x.1 as u8)})
+             , score: (('~' as u8) - (x.1 as u8)) as f32})
              .collect::<Vec<Base>>()
          }
       }
     )
   )
-}
-
-// https://github.com/filipegoncalves/rust-config/blob/407b9539f4efefae3703ef86b887a0c55611a51e/src/parser.rs#L580
-// This parser is successful only if the input is over
-fn eof(input:&[u8]) -> IResult<&[u8], &[u8]> {
-    if input.len() == 0 {
-        Done(input, input)
-    } else {
-        Error(0)
-    }
 }
