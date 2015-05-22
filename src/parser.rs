@@ -56,7 +56,7 @@ pub fn many_reads(input:&[u8]) -> IResult<&[u8], Vec<Sequence>> {
                  'U' => Nucleobase::U,
                  _ => Nucleobase::N,
                }
-             , score: (('~' as u8) - (x.1 as u8)) as f32})
+             , score: ((x.1 as u8) - ('!' as u8)) as f32})
              .collect::<Vec<Base>>()
          }
       }
