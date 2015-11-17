@@ -1,6 +1,5 @@
 use std::str;
-use nom::IResult::*;
-use nom::{IResult,Needed,not_line_ending,line_ending,eof};
+use nom::{IResult,not_line_ending,line_ending,eof};
 
 #[derive(Debug)]
 pub struct Base {
